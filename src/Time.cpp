@@ -12,7 +12,6 @@ Time::Time() :
 }
 
 Time::~Time() {
-    // TODO Auto-generated destructor stub
 }
 
 std::string Time::getFormatTime() {

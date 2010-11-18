@@ -16,7 +16,6 @@ Date::Date(const std::string& datum) {
 }
 
 Date::~Date() {
-    // TODO Auto-generated destructor stub
 }
 
 std::string Date::getFormatDate() {
