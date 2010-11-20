@@ -9,5 +9,7 @@
 #include <cstdlib>
 #include <string>
 #include <cstring>
+#include <iostream>
+#include "Tour.h"
 
-bool saveToFile();
+bool saveToFile(Tour* t);

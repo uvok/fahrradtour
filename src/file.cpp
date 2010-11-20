@@ -7,7 +7,7 @@
 
 #include "file.h"
 
-bool saveToFile() {
+bool saveToFile(Tour* t) {
     char foo[20] = {'\0'};
     strncpy(foo, getenv("HOME"), 19);
     chdir(foo);
@@ -15,12 +15,13 @@ bool saveToFile() {
     // TODO: Check if we are in our home directory
 
     std::ofstream file;
+    // Let user choose filename?
     file.open("bike.csv", std::ios::app);
 
-    // TODO: Is this a correct check?
+    // TODO: Is this a correct/valid check?
     if (!file) {
-        std::cout << "Could not open file!" << std::endl;
-        // TODO: Does this make sense at all? \
+        std::cerr << "Could not open file!" << std::endl;
+        // TODO: Does this make sense at all?
         // If opening fails, why should I close it?
         file.close();
         return false;
@@ -28,8 +29,7 @@ bool saveToFile() {
 
     else if (file) {
         // TODO: Stub, replace by actual code
-        file << "This is a first test";
-        file << ";if you can read this, everything went right!" << std::endl;
+        file << t;
     }
 
     file.close();
