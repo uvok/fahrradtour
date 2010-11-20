@@ -23,7 +23,7 @@ void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {
 }
 
 // Gibt nur die grade eingegebenen Daten zur Kontrolle aus
-void Tour::dumpData() {
+void Tour::dumpFormatData() {
     // cout << setw(WIDTH) sollte das gleiche tun?
 
     std::cout.width(WIDTH);
@@ -43,14 +43,22 @@ void Tour::dumpData() {
     std::cout << MaxSpeed << std::endl;
 
     std::cout.width(WIDTH);
+    std::cout.precision(2);
     std::cout << std::left << "Avg Geschw:";
     std::cout << getAvgSpeed() << std::endl;
 }
 
-float Tour::getAvgSpeed() {
+float Tour::getAvgSpeed() const {
     // v = s / t
     double speed;
     // km/s * 60 = km/min; km/min * 60 = km/h;
     speed = 3600 * Laenge / Dauer->getSeconds();
     return speed;
+}
+
+
+std::ostream &operator<< (std::ostream &out, Tour *t) {
+    out << t->Datum->getFormatDate() << ";" << t->Laenge << ";" <<
+            t->Dauer->getFormatTime() << ";" << t->MaxSpeed << std::endl;
+    return out;
 }

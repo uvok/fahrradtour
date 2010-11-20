@@ -10,6 +10,7 @@
 
 #include "Date.h"
 #include "Time.h"
+#include <iostream>
 
 class Tour {
 public:
@@ -19,9 +20,12 @@ public:
 
     void setupTour(Date *datum, Time *dauer, float laenge, float maxspeed);
 
-    void dumpData();
+    void dumpFormatData();
 
-    float getAvgSpeed();
+    float getAvgSpeed() const;
+
+    //friend std::ostream &operator<< (std::ostream &out, Tour &t);
+    friend std::ostream &operator<< (std::ostream &out, Tour *t);
 
 private:
     float Laenge, MaxSpeed;
