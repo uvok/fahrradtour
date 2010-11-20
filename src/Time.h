@@ -20,10 +20,10 @@ public:
     Time(const std::string& time);
     virtual ~Time();
 
-    std::string getFormatTime();
+    std::string getFormatTime() const;
     bool setTime(const std::string& time);
 
-    unsigned int getSeconds();
+    unsigned int getSeconds() const;
 
 private:
     USHORT Minutes, Seconds;
