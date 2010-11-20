@@ -14,5 +14,4 @@
 std::string IntToString(int number);
 int StringToInt(const std::string& datestring);
 
-
 #endif /* TOOL_H_ */

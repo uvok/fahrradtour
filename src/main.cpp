@@ -11,7 +11,6 @@
 #include "file.h"
 #include <cstdio>
 
-
 bool createTour();
 
 int main() {
@@ -20,6 +19,8 @@ int main() {
 }
 
 bool createTour() {
+    // Man koennte meinen, dies gehoert in die Tour Klasse,
+    // Sehe ich nicht so, da hier die Daten nur abgefragt werden...
     Time time;
     Date date;
     Tour tour;

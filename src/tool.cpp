@@ -16,7 +16,7 @@ std::string IntToString(int number) {
 }
 
 int StringToInt(const std::string& datestring) {
-    int i=0;
+    int i = 0;
     std::stringstream ss;
     ss.str(datestring);
     ss >> i;

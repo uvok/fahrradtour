@@ -13,7 +13,6 @@ Tour::Tour() :
 }
 
 Tour::~Tour() {
-
 }
 
 void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {
@@ -23,7 +22,10 @@ void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {
     this->MaxSpeed = maxspeed;
 }
 
+// Gibt nur die grade eingegebenen Daten zur Kontrolle aus
 void Tour::dumpData() {
+    // cout << setw(WIDTH) sollte das gleiche tun?
+
     std::cout.width(WIDTH);
     std::cout << std::left << "Datum:";
     std::cout << Datum->getFormatDate() << std::endl;
@@ -48,7 +50,7 @@ void Tour::dumpData() {
 float Tour::getAvgSpeed() {
     // v = s / t
     double speed;
+    // km/s * 60 = km/min; km/min * 60 = km/h;
     speed = 3600 * Laenge / Dauer->getSeconds();
     return speed;
-
 }
