@@ -11,7 +11,9 @@
 #include <string>
 #include <vector>
 #include <iostream>
+#include <sstream>
 #include "tool.h"
+
 typedef unsigned short USHORT;
 
 class Date {
@@ -24,7 +26,7 @@ public:
 
     // String *must* be in format DD.MM.YYYY
     bool setDate(const std::string& date);
-    std::string getFormatDate();
+    std::string getFormatDate() const;
 
 private:
     USHORT Day, Month, Year;

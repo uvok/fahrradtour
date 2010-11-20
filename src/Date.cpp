@@ -18,21 +18,15 @@ Date::Date(const std::string& datum) {
 Date::~Date() {
 }
 
-std::string Date::getFormatDate() {
-    // TODO: Could do it with outstreams
-    // wouldn't have to do that string appending stuffs
-    std::string datestring = "";
+std::string Date::getFormatDate() const {
+    std::ostringstream oss;
 
-    if (Day < 10) datestring += "0";
-    datestring.append(IntToString(Day));
-    datestring.append(".");
+    if (Day < 10) oss << 0;
+    oss << Day << ".";
+    if (Month < 10) oss << 0;
+    oss << Month << "." << Year;
 
-    if (Month < 10) datestring += "0";
-    datestring.append(IntToString(Month));
-    datestring.append(".");
-    datestring.append(IntToString(Year));
-
-    return datestring;
+    return oss.str();
 }
 
 bool Date::setDate(const std::string& date) {
