@@ -9,10 +9,14 @@
 #define WIDTH 16
 
 Tour::Tour() :
-    Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
+    Laenge(0), MaxSpeed(0) { //, Datum(NULL), Dauer(NULL) {
+        Datum = new Date();
+        Dauer = new Time();
 }
 
 Tour::~Tour() {
+    delete Datum;
+    delete Dauer;
 }
 
 void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {
