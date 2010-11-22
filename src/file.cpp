@@ -15,7 +15,7 @@ bool saveToFile(Tour* t) {
     // TODO: Check if we are in our home directory
 
     std::ofstream file;
-    // Let user choose filename?
+    // TODO: Let user choose filename?
     file.open("bike.csv", std::ios::app);
 
     // TODO: Is this a correct/valid check?
@@ -28,7 +28,6 @@ bool saveToFile(Tour* t) {
     }
 
     else if (file) {
-        // TODO: Stub, replace by actual code
         file << t;
     }
 
