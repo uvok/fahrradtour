@@ -20,7 +20,15 @@ int main() {
     // 2. Dump Tours
     // 3. (Future) Get statistics
 
-    create();
+    //create();
+    
+    std::string foo;
+    
+    std::cin >> foo;
+    
+    Tour test(foo);
+    test.dumpFormatData();
+    
     return 0;
 
 }
