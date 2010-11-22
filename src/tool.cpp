@@ -22,3 +22,12 @@ int StringToInt(const std::string& datestring) {
     ss >> i;
     return i;
 }
+
+double StringToDbl(const std::string& datestring) {
+    double i = 0;
+    std::stringstream ss;
+    ss.str(datestring);
+    ss >> i;
+    return i;
+}    
+
