@@ -10,11 +10,14 @@
 
 #include "Date.h"
 #include "Time.h"
+#include <string>
 #include <iostream>
 
 class Tour {
 public:
     Tour();
+    
+    Tour(std::string FormatTour);
 
     virtual ~Tour();
 

@@ -66,3 +66,17 @@ std::ostream &operator<< (std::ostream &out, Tour *t) {
             t->Dauer->getFormatTime() << ";" << t->MaxSpeed << std::endl;
     return out;
 }
+
+Tour::Tour(std::string FormatTour) {
+    std::stringstream ss(FormatTour);
+    std::string temp[4];
+    int i = 0;
+    while (ss.good()) {
+        std::getline(ss, temp[i], ';');
+        i++;
+    }
+    Datum->setDate(temp[0]);
+    Laenge=StringToDbl(temp[1]);
+    //Dauer->setTime(temp[2]);
+    MaxSpeed=StringToDbl(temp[3]);
+}
