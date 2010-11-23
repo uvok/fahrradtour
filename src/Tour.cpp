@@ -9,7 +9,7 @@
 #define WIDTH 16
 
 Tour::Tour() :
-    Laenge(0), MaxSpeed(0) { //, Datum(NULL), Dauer(NULL) {
+    Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
         Datum = new Date();
         Dauer = new Time();
 }
@@ -20,6 +20,9 @@ Tour::~Tour() {
 }
 
 void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {
+  // Delete stack, if these already point somewhere, to avoid memory leaks.
+  if(this->Datum) delete Datum;
+  if(this->Dauer) delete Dauer;
     this->Datum = datum;
     this->Dauer = dauer;
     this->Laenge = laenge;
@@ -68,6 +71,8 @@ std::ostream &operator<< (std::ostream &out, Tour *t) {
 }
 
 Tour::Tour(std::string FormatTour) {
+  Datum = new Date;
+  Dauer = new Time;
     std::stringstream ss(FormatTour);
     std::string temp[4];
     int i = 0;
@@ -77,6 +82,6 @@ Tour::Tour(std::string FormatTour) {
     }
     Datum->setDate(temp[0]);
     Laenge=StringToDbl(temp[1]);
-    //Dauer->setTime(temp[2]);
+    Dauer->setTime(temp[2]);
     MaxSpeed=StringToDbl(temp[3]);
 }
