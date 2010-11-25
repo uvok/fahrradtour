@@ -63,6 +63,7 @@ bool printFileAsTable() {
     return false;
   }
 
+  // Everything should be ok here
   enum columns { DATE, DURATION, LENGHT, MAXV, AVGV } i;
   short columnWidth [5] = {0};
   columnWidth[DATE] = 12;
@@ -101,6 +102,30 @@ bool printFileAsTable() {
     }
   } std::cout << "|" << std::endl;
   cout << horizontal<< endl;
+
+  string format;
+  Tour t;
+
+  while(file.good())
+    {
+      getline(file, format);
+      if(format=="") break;
+      t.setupTour(format);
+
+      for(int j=0; j<5; j++) {
+	std::cout << "| "; std::cout.width(columnWidth[j]-1); std::cout << left;
+	
+	switch(j) {
+	case(DATE):           std::cout << t.Datum->getFormatDate(); break;
+	case(LENGHT):    std::cout << t.getLenght(); break;
+	case(DURATION):  std::cout << t.Dauer->getFormatTime() ; break;
+	case(MAXV):      std::cout << t.getvMax() ; break;
+	case(AVGV):      std::cout.precision(4); std::cout << t.getAvgSpeed() ; break;
+
+	}
+      } std::cout << "|" << std::endl;
+    }
+  std::cout << horizontal << std::endl << std::endl << std::endl ;
 
   file.close();
 
