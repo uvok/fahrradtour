@@ -8,18 +8,21 @@
 #include "file.h"
 
 bool saveToFile(Tour* t) {
+    int check;
     char foo[20] = {'\0'};
     strncpy(foo, getenv("HOME"), 19);
-    chdir(foo);
+    check = chdir(foo);
 
-    // TODO: Check if we are in our home directory
+    if(check == -1) {
+        std::cerr << "An error occured while trying to changing the directory. Abort" << std::endl;
+        return false;
+    }
 
     std::ofstream file;
     // TODO: Let user choose filename?
     file.open("bike.csv", std::ios::app);
 
-    // TODO: Is this a correct/valid check?
-    if (!file) {
+    if (!file.is_open()) {
         std::cerr << "Could not open file!" << std::endl;
         // TODO: Does this make sense at all?
         // If opening fails, why should I close it?
@@ -27,7 +30,7 @@ bool saveToFile(Tour* t) {
         return false;
     }
 
-    else if (file) {
+    else if (file.is_open()) {
         file << t;
     }
 
