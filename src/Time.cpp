@@ -74,8 +74,8 @@ bool Time::setTime(const std::string& time) {
     i = v.back();
     v.pop_back();
 
-    // Laenger als 3 Stunden werd ich eh nicht fahrn
-    if (i >= 0 && i <= 180) Minutes = i;
+    // Format ist MM:SS, laenger als 99 Mins kann man net eingeben
+    if (i >= 0 && i <= 99) Minutes = i;
     else {
         std::cerr << "Formatfehler" << std::endl;
         return false;
