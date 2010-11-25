@@ -38,3 +38,9 @@ bool saveToFile(Tour* t) {
 
     return true;
 }
+
+bool printFileAsTable() {
+
+  return true;
+}
+
