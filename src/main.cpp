@@ -22,13 +22,7 @@ int main() {
 
     //create();
     
-    std::string foo;
-    
-    std::cin >> foo;
-    
-    Tour test(foo);
-    test.dumpFormatData();
-    
+  printFileAsTable();    
     return 0;
 
 }
