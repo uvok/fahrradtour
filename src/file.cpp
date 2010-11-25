@@ -76,6 +76,7 @@ bool printFileAsTable() {
   const int n = columnWidth[DATE]+columnWidth[LENGHT]+columnWidth[DURATION]+columnWidth[MAXV]+columnWidth[AVGV]+6;
   char* horizontal = new char[n];
 
+  // horizontal line
   for(int iter=0; iter<n; iter++)
     horizontal[iter]='-';
 
@@ -87,6 +88,7 @@ bool printFileAsTable() {
       horizontal[k] = '+'; 
     }
 
+  // Begin to write table
   cout << horizontal<< endl;
   //header
   for(int j=0; j<5; j++) {
@@ -109,18 +111,21 @@ bool printFileAsTable() {
   while(file.good())
     {
       getline(file, format);
-      if(format=="") break;
+      if(format=="") continue; // empty line
       t.setupTour(format);
 
+      // Write actual table content
+      std::cout.precision(4);
       for(int j=0; j<5; j++) {
+
 	std::cout << "| "; std::cout.width(columnWidth[j]-1); std::cout << left;
 	
 	switch(j) {
-	case(DATE):           std::cout << t.Datum->getFormatDate(); break;
-	case(LENGHT):    std::cout << t.getLenght(); break;
-	case(DURATION):  std::cout << t.Dauer->getFormatTime() ; break;
-	case(MAXV):      std::cout << t.getvMax() ; break;
-	case(AVGV):      std::cout.precision(4); std::cout << t.getAvgSpeed() ; break;
+	case(DATE):      std::cout << t.Datum->getFormatDate(); break;
+	case(LENGHT):    std::cout << t.getLenght();            break;
+	case(DURATION):  std::cout << t.Dauer->getFormatTime(); break;
+	case(MAXV):      std::cout << t.getvMax();              break;
+	case(AVGV):      std::cout << t.getAvgSpeed() ; break;
 
 	}
       } std::cout << "|" << std::endl;
