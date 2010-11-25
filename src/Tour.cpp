@@ -14,9 +14,31 @@ Tour::Tour() :
         Dauer = new Time();
 }
 
+Tour::Tour(std::string FormatTour) :
+   Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
+  Datum = new Date;
+  Dauer = new Time;
+  setupTour(FormatTour);
+}
+
+
 Tour::~Tour() {
     delete Datum;
     delete Dauer;
+}
+
+void Tour::setupTour(std::string FormatTour) {
+    std::stringstream ss(FormatTour);
+    std::string temp[4];
+    int i = 0;
+    while (ss.good()) {
+        std::getline(ss, temp[i], ';');
+        i++;
+    }
+    Datum->setDate(temp[0]);
+    Laenge=StringToDbl(temp[1]);
+    Dauer->setTime(temp[2]);
+    MaxSpeed=StringToDbl(temp[3]);
 }
 
 void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {
@@ -70,18 +92,5 @@ std::ostream &operator<< (std::ostream &out, Tour *t) {
     return out;
 }
 
-Tour::Tour(std::string FormatTour) {
-  Datum = new Date;
-  Dauer = new Time;
-    std::stringstream ss(FormatTour);
-    std::string temp[4];
-    int i = 0;
-    while (ss.good()) {
-        std::getline(ss, temp[i], ';');
-        i++;
-    }
-    Datum->setDate(temp[0]);
-    Laenge=StringToDbl(temp[1]);
-    Dauer->setTime(temp[2]);
-    MaxSpeed=StringToDbl(temp[3]);
-}
+
+
