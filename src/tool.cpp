@@ -29,5 +29,5 @@ double StringToDbl(const std::string& datestring) {
     ss.str(datestring);
     ss >> i;
     return i;
-}    
+}
 
