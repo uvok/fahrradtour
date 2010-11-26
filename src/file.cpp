@@ -168,8 +168,37 @@ bool printFileAsTable() {
     }
     std::cout << horizontal << std::endl << horizontal << std::endl;
 
-  file.close();
+    for (int j = 0; j < 5; j++) {
 
-  return true;
+        std::cout << "| ";
+        std::cout.width(columnWidth[j] - 1);
+        std::cout << left;
+
+        switch (j) {
+            case ( DATE ):
+                std::cout << " ";
+                break;
+            case ( LENGHT ):
+                std::cout << total.getLenght();
+                break;
+            case ( DURATION ):
+                std::cout << total.Dauer->getFormatTime();
+                break;
+            case ( MAXV ):
+                std::cout << total.getvMax();
+                break;
+            case ( AVGV ):
+                std::cout << total.getAvgSpeed();
+                break;
+
+        }
+    }
+    std::cout << "|" << std::endl;
+
+    std::cout << std::endl << std::endl << std::endl;
+
+    file.close();
+
+    return true;
 }
 
