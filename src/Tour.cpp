@@ -10,15 +10,17 @@
 
 Tour::Tour() :
     Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
-        Datum = new Date();
-        Dauer = new Time();
+    Datum = new Date();
+    Dauer = new Time();
 }
 
 Tour::Tour(std::string FormatTour) :
-   Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
-  Datum = new Date;
-  Dauer = new Time;
-  setupTour(FormatTour);
+    Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
+    Datum = new Date;
+    Dauer = new Time;
+    setupTour(FormatTour);
+}
+
 }
 
 
@@ -36,15 +38,15 @@ void Tour::setupTour(std::string FormatTour) {
         i++;
     }
     Datum->setDate(temp[0]);
-    Laenge=StringToDbl(temp[1]);
+    Laenge = StringToDbl(temp[1]);
     Dauer->setTime(temp[2]);
-    MaxSpeed=StringToDbl(temp[3]);
+    MaxSpeed = StringToDbl(temp[3]);
 }
 
 void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {
-  // Delete stack, if these already point somewhere, to avoid memory leaks.
-  if(this->Datum) delete Datum;
-  if(this->Dauer) delete Dauer;
+    // Delete stack, if these already point somewhere, to avoid memory leaks.
+    if (this->Datum) delete Datum;
+    if (this->Dauer) delete Dauer;
     this->Datum = datum;
     this->Dauer = dauer;
     this->Laenge = laenge;
@@ -85,12 +87,22 @@ float Tour::getAvgSpeed() const {
     return speed;
 }
 
+std::ostream &operator<<(std::ostream &out, Tour &t) {
+    out << &t;
+    return out;
+}
 
-std::ostream &operator<< (std::ostream &out, Tour *t) {
-    out << t->Datum->getFormatDate() << ";" << t->Laenge << ";" <<
-            t->Dauer->getFormatTime() << ";" << t->MaxSpeed << std::endl;
+std::ostream &operator<<(std::ostream &out, Tour *t) {
+    out << t->Datum->getFormatDate() << ";" << t->Laenge << ";"
+            << t->Dauer->getFormatTime() << ";" << t->MaxSpeed << std::endl;
     return out;
 }
 
 
+
+void Tour::Add(Tour &t) {
+    Laenge = this->Laenge + t.Laenge;
+    MaxSpeed = ( this->MaxSpeed > t.MaxSpeed ) ? ( MaxSpeed ) : ( t.MaxSpeed );
+    Dauer->Add(t.Dauer, this->Dauer);
+}
 

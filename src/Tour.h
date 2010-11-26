@@ -24,15 +24,22 @@ public:
     void setupTour(Date *datum, Time *dauer, float laenge, float maxspeed);
     void setupTour(std::string FormatTour);
 
+    void Add(Tour &t);
     void dumpFormatData();
 
     float getAvgSpeed() const;
 
-    float getLenght() {return Laenge;}
-    float getvMax() {return MaxSpeed;}
+    float getLenght() {
+        return Laenge;
+    }
+    float getvMax() {
+        return MaxSpeed;
+    }
 
-    //friend std::ostream &operator<< (std::ostream &out, Tour &t);
-    friend std::ostream &operator<< (std::ostream &out, Tour *t);
+
+    friend std::ostream &operator<<(std::ostream &out, Tour &t);
+
+    friend std::ostream &operator<<(std::ostream &out, Tour *t);
 
     friend bool printFileAsTable();
 
