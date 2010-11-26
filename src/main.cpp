@@ -20,9 +20,9 @@ int main() {
     // 2. Dump Tours
     // 3. (Future) Get statistics
 
-    //create();
-    
-  printFileAsTable();    
+    // create();
+
+    printFileAsTable();
     return 0;
 
 }
@@ -68,14 +68,9 @@ bool create() {
     } while (cor != 'y' && cor != 'n');
 
     if (cor == 'n') {
-        delete time;
-        delete date;
         return false;
     }
     else if (cor == 'y') saveToFile(&tour);
-
-    delete time;
-    delete date;
 
     return true;
 }
