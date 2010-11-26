@@ -71,30 +71,31 @@ bool printFileAsTable() {
         return false;
     }
 
-  // Everything should be ok here
-  enum columns { DATE, DURATION, LENGHT, MAXV, AVGV } i;
-  short columnWidth [5] = {0};
-  columnWidth[DATE] = 12;
-  columnWidth[LENGHT] = 8;
-  columnWidth[DURATION] = 7;
-  columnWidth[MAXV] = 7;
-  columnWidth[AVGV] = 7;
+    // Everything should be ok here
+    enum columns {
+        DATE, DURATION, LENGHT, MAXV, AVGV
+    };
+    short columnWidth[5] = {0};
+    columnWidth[DATE] = 12;
+    columnWidth[LENGHT] = 8;
+    columnWidth[DURATION] = 7;
+    columnWidth[MAXV] = 7;
+    columnWidth[AVGV] = 7;
 
+    const int n = columnWidth[DATE] + columnWidth[LENGHT]
+            + columnWidth[DURATION] + columnWidth[MAXV] + columnWidth[AVGV] + 6;
+    char* horizontal = new char[n];
 
-  const int n = columnWidth[DATE]+columnWidth[LENGHT]+columnWidth[DURATION]+columnWidth[MAXV]+columnWidth[AVGV]+6;
-  char* horizontal = new char[n];
+    // horizontal line
+    for (int iter = 0; iter < n; iter++)
+        horizontal[iter] = '-';
 
-  // horizontal line
-  for(int iter=0; iter<n; iter++)
-    horizontal[iter]='-';
-
-  int k = 0;
-  horizontal[k] = '+'; 
-  for(int iter=0; iter<5; iter++)
-    {
-      k+=columnWidth[iter]+1; 
-      horizontal[k] = '+'; 
-    }
+    int k = 0;
+    horizontal[k] = '+';
+    for (int iter = 0; iter < 5; iter++) {
+        k += columnWidth[iter] + 1;
+        horizontal[k] = '+';
+   }
 
   // Begin to write table
   cout << horizontal<< endl;
