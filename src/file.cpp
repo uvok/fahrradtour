@@ -13,8 +13,10 @@ bool saveToFile(Tour* t) {
     strncpy(foo, getenv("HOME"), 19);
     check = chdir(foo);
 
-    if(check == -1) {
-        std::cerr << "An error occured while trying to changing the directory. Abort" << std::endl;
+    if (check == -1) {
+        std::cerr
+                << "An error occured while trying to changing the directory. Abort"
+                << std::endl;
         return false;
     }
 
@@ -30,7 +32,12 @@ bool saveToFile(Tour* t) {
         return false;
     }
 
-    else if (file.is_open()) {
+    else if (t == NULL) {
+        std::cerr << "Tour pointer is zero!" << std::endl;
+        return false;
+    }
+
+    else if (file.is_open() && t != NULL) {
         file << t;
     }
 
