@@ -122,36 +122,51 @@ bool printFileAsTable() {
                 std::cout << "Avg v";
                 break;
 
+        }
     }
-  } std::cout << "|" << std::endl;
-  cout << horizontal<< endl;
+    std::cout << "|" << std::endl;
+    cout << horizontal << endl;
 
-  string format;
-  Tour t;
+    string format;
+    Tour t;
+    Tour total;
 
-  while(file.good())
-    {
-      getline(file, format);
-      if(format=="") continue; // empty line
-      t.setupTour(format);
+    while (file.good()) {
+        getline(file, format);
+        if (format == "") continue; // empty line
+        t.setupTour(format);
 
-      // Write actual table content
-      std::cout.precision(4);
-      for(int j=0; j<5; j++) {
+        // Write actual table content
+        std::cout.precision(4);
+        for (int j = 0; j < 5; j++) {
 
-	std::cout << "| "; std::cout.width(columnWidth[j]-1); std::cout << left;
-	
-	switch(j) {
-	case(DATE):      std::cout << t.Datum->getFormatDate(); break;
-	case(LENGHT):    std::cout << t.getLenght();            break;
-	case(DURATION):  std::cout << t.Dauer->getFormatTime(); break;
-	case(MAXV):      std::cout << t.getvMax();              break;
-	case(AVGV):      std::cout << t.getAvgSpeed() ; break;
+            std::cout << "| ";
+            std::cout.width(columnWidth[j] - 1);
+            std::cout << left;
 
-	}
-      } std::cout << "|" << std::endl;
+            switch (j) {
+                case ( DATE ):
+                    std::cout << t.Datum->getFormatDate();
+                    break;
+                case ( LENGHT ):
+                    std::cout << t.getLenght();
+                    break;
+                case ( DURATION ):
+                    std::cout << t.Dauer->getFormatTime();
+                    break;
+                case ( MAXV ):
+                    std::cout << t.getvMax();
+                    break;
+                case ( AVGV ):
+                    std::cout << t.getAvgSpeed();
+                    break;
+
+            }
+        }
+        std::cout << "|" << std::endl;
+        total.Add(t);
     }
-  std::cout << horizontal << std::endl << std::endl << std::endl ;
+    std::cout << horizontal << std::endl << horizontal << std::endl;
 
   file.close();
 
