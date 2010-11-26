@@ -1,10 +1,3 @@
-/*
- * tool.cpp
- *
- *  Created on: 17.11.2010
- *      Author: andreas
- */
-
 #include "tool.h"
 
 std::string IntToString(int number) {

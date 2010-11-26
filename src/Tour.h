@@ -1,10 +1,3 @@
-/*
- * Tour.h
- *
- *  Created on: 17.11.2010
- *      Author: andreas
- */
-
 #ifndef TOUR_H_
 #define TOUR_H_
 

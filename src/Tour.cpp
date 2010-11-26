@@ -1,10 +1,3 @@
-/*
- * Tour.cpp
- *
- *  Created on: 17.11.2010
- *      Author: andreas
- */
-
 #include "Tour.h"
 #define WIDTH 16
 

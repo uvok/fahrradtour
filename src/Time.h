@@ -1,10 +1,3 @@
-/*
- * Time.h
- *
- *  Created on: 17.11.2010
- *      Author: andreas
- */
-
 #ifndef TIME_H_
 #define TIME_H_
 

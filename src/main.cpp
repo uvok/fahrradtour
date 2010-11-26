@@ -1,10 +1,3 @@
-/*
- * main.cpp
- *
- *  Created on: 17.11.2010
- *      Author: andreas
- */
-
 #include "Date.h"
 #include "Time.h"
 #include "Tour.h"

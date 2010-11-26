@@ -1,10 +1,3 @@
-/*
- * Date.cpp
- *
- *  Created on: 17.11.2010
- *      Author: andreas
- */
-
 #include "Date.h"
 
 Date::Date() :

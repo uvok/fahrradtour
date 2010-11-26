@@ -1,10 +1,3 @@
-/*
- * Time.cpp
- *
- *  Created on: 17.11.2010
- *      Author: andreas
- */
-
 #include "Time.h"
 
 Time::Time() :

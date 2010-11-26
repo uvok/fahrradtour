@@ -1,10 +1,3 @@
-/*
- * file.cpp
- *
- *  Created on: 18.11.2010
- *      Author: andreas
- */
-
 #include "file.h"
 
 bool saveToFile(Tour* t) {
