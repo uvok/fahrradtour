@@ -63,13 +63,13 @@ bool printFileAsTable() {
     // TODO: Let user choose filename?
     file.open("bike.csv");
 
-  if (!file.is_open()) {
-    std::cerr << "Could not open file!" << std::endl;
-    // TODO: Does this make sense at all?
-    // If opening fails, why should I close it?
-    file.close();
-    return false;
-  }
+    if (!file.is_open()) {
+        std::cerr << "Could not open file!" << std::endl;
+        // TODO: Does this make sense at all?
+        // If opening fails, why should I close it?
+        file.close();
+        return false;
+    }
 
   // Everything should be ok here
   enum columns { DATE, DURATION, LENGHT, MAXV, AVGV } i;
