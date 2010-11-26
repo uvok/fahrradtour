@@ -95,20 +95,32 @@ bool printFileAsTable() {
     for (int iter = 0; iter < 5; iter++) {
         k += columnWidth[iter] + 1;
         horizontal[k] = '+';
-   }
+    }
 
-  // Begin to write table
-  cout << horizontal<< endl;
-  //header
-  for(int j=0; j<5; j++) {
-    std::cout << "| "; std::cout.width(columnWidth[j]-1); std::cout << left;
+    // Begin to write table
+    cout << horizontal << endl;
+    //header
+    for (int j = 0; j < 5; j++) {
+        std::cout << "| ";
+        std::cout.width(columnWidth[j] - 1);
+        std::cout << left;
 
-    switch(j) {
-    case(DATE):      std::cout << "Datum" ; break;
-    case(LENGHT):    std::cout << "Laenge"; break;
-    case(DURATION):  std::cout << "Dauer" ; break;
-    case(MAXV):      std::cout << "Max v" ; break;
-    case(AVGV):      std::cout << "Avg v" ; break;
+        switch (j) {
+            case ( DATE ):
+                std::cout << "Datum";
+                break;
+            case ( LENGHT ):
+                std::cout << "Laenge";
+                break;
+            case ( DURATION ):
+                std::cout << "Dauer";
+                break;
+            case ( MAXV ):
+                std::cout << "Max v";
+                break;
+            case ( AVGV ):
+                std::cout << "Avg v";
+                break;
 
     }
   } std::cout << "|" << std::endl;
