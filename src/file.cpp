@@ -47,20 +47,21 @@ bool saveToFile(Tour* t) {
 }
 
 bool printFileAsTable() {
-  char foo[20] = {'\0'};
-  int check;
-  strncpy(foo, getenv("HOME"), 19);
-  check = chdir(foo);
+    char foo[20] = {'\0'};
+    int check;
+    strncpy(foo, getenv("HOME"), 19);
+    check = chdir(foo);
 
-  if(check == -1) {
-    std::cerr << "An error occured while trying to changing the directory. Abort" << std::endl;
-    return false;
-  }
+    if (check == -1) {
+        std::cerr
+                << "An error occured while trying to changing the directory. Abort"
+                << std::endl;
+        return false;
+    }
 
-
-  std::ifstream file;
-  // TODO: Let user choose filename?
-  file.open("bike.csv");
+    std::ifstream file;
+    // TODO: Let user choose filename?
+    file.open("bike.csv");
 
   if (!file.is_open()) {
     std::cerr << "Could not open file!" << std::endl;
