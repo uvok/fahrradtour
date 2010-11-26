@@ -88,3 +88,16 @@ bool Time::setTime(const std::string& time) {
 unsigned int Time::getSeconds() const {
     return Minutes * 60 + Seconds;
 }
+
+void Time::Add(Time t1, Time t2) {
+    this->Add(&t1, &t2);
+}
+
+void Time::Add(Time *t1, Time *t2) {
+    this->Seconds = t1->Seconds + t2->Seconds;
+    this->Minutes = t1->Minutes + t2->Minutes;
+
+    Minutes += Seconds / 60;
+    Seconds %= 60;
+
+}
