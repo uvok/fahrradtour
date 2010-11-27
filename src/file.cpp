@@ -2,10 +2,10 @@
 
 bool saveToFile(Tour* t) {
     int check;
-    char foo[20] = {'\0'};
-    strncpy(foo, getenv("HOME"), 19);
-    check = chdir(foo);
+    string home=getenv("HOME");
+    check = chdir(home.c_str());
 
+    //string oFolder_user; passwd *pw = getpwuid(getuid()); if (pw) oFolder_user = pw->pw_dir;
     if (check == -1) {
         std::cerr
                 << "An error occured while trying to changing the directory. Abort"
@@ -40,10 +40,9 @@ bool saveToFile(Tour* t) {
 }
 
 bool printFileAsTable() {
-    char foo[20] = {'\0'};
     int check;
-    strncpy(foo, getenv("HOME"), 19);
-    check = chdir(foo);
+    string home=getenv("HOME");
+    check = chdir(home.c_str());
 
     if (check == -1) {
         std::cerr
