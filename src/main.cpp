@@ -16,6 +16,7 @@ int main() {
     // create();
 
     printFileAsTable();
+
     return 0;
 
 }
@@ -40,7 +41,7 @@ bool create() {
     std::cin >> leng;
 
     do {
-        std::cout << "Dauer [MM:SS]: " << std::endl;
+        std::cout << "Dauer [[MM]M:SS]: " << std::endl;
         std::cin >> dur;
     } while (time->setTime(dur) != true);
 

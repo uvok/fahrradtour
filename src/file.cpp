@@ -157,7 +157,7 @@ bool printFileAsTable() {
             }
         }
         std::cout << "|" << std::endl;
-        total.Add(t);
+        total = total + t;
     }
     std::cout << horizontal << std::endl << horizontal << std::endl;
 
