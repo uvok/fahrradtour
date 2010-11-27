@@ -1,7 +1,7 @@
 #include "file.h"
 
 bool saveToFile(Tour* t) {
-#if defined(__LINUX__)
+#if defined(__linux__) || defined(__unix__)
     int check;
     string home=getenv("HOME");
     check = chdir(home.c_str());
@@ -46,7 +46,7 @@ bool saveToFile(Tour* t) {
 }
 
 bool printFileAsTable() {
-#if defined(___LINUX__)
+#if defined(__linux__) || defined(__unix__)
     int check;
     string home=getenv("HOME");
     check = chdir(home.c_str());
