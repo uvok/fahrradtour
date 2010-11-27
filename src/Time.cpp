@@ -24,7 +24,7 @@ std::string Time::getFormatTime() const {
 
 bool Time::setTime(const std::string& time) {
     // Sehr einfache "Formarprüfung", die erstmal nur die Stringlänge überprüft
-    if (time.length() != 5) {
+    if (time.length() < 4 || time.length() > 6) {
         std::cerr << "Formatfehler" << std::endl;
         return false;
     }
@@ -67,8 +67,8 @@ bool Time::setTime(const std::string& time) {
     i = v.back();
     v.pop_back();
 
-    // Format ist MM:SS, laenger als 99 Mins kann man net eingeben
-    if (i >= 0 && i <= 99) Minutes = i;
+    // Format ist [MM]M:SS, laenger als 999 Mins kann man nicht eingeben
+    if (i >= 0 && i <= 999) Minutes = i;
     else {
         std::cerr << "Formatfehler" << std::endl;
         return false;
@@ -80,6 +80,16 @@ bool Time::setTime(const std::string& time) {
 
 unsigned int Time::getSeconds() const {
     return Minutes * 60 + Seconds;
+}
+
+Time Time::operator+(const Time & rhs) {
+    Time tm;
+    tm.Seconds = this->Seconds + rhs.Seconds;
+    tm.Minutes = this->Minutes + rhs.Minutes;
+    tm.Minutes += tm.Seconds / 60;
+    tm.Seconds %= 60;
+
+    return tm;
 }
 
 void Time::Add(Time t1, Time t2) {

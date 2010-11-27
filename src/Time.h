@@ -18,8 +18,12 @@ public:
 
     unsigned int getSeconds() const;
 
-    void Add(Time *t1, Time *t2);
+    Time operator+ (const Time & rhs);
+
     void Add(Time t1, Time t2);
+
+    void Add(Time *t1, Time *t2);
+
 
 private:
     USHORT Minutes, Seconds;
