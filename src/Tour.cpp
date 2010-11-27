@@ -25,14 +25,21 @@ Tour::Tour(Tour &t) :
 }
 
 Tour Tour::operator=(const Tour &t) {
-    delete Datum;
-    delete Dauer;
     Laenge = t.Laenge;
     MaxSpeed = t.MaxSpeed;
+
+    if(this->Datum != t.Datum) {
+    delete Datum;
     Datum = new Date();
     Datum->setDate(t.Datum->getFormatDate());
+    }
+
+    if(this->Dauer != t.Dauer) {
+    delete Dauer;
     Dauer = new Time();
     Dauer->setTime(t.Dauer->getFormatTime());
+    }
+
     return *this;
 }
 
