@@ -1,7 +1,7 @@
 #include "Date.h"
 
 Date::Date() :
-    Day(1), Month(1), Year(1970) {
+    Day(1), Month(1), Year(2000) {
 }
 
 Date::Date(const std::string& datum) {
@@ -52,7 +52,7 @@ bool Date::setDate(const std::string& date) {
     i = v.back();
     v.pop_back();
     // Jahresgrenzen willkuerlich festgelegt
-    if (i > 2000 && i < 2100) Year = i;
+    if (i >= 2000 && i <= 2100) Year = i;
     else {
         std::cerr << "Formatfehler" << std::endl;
         return false;
