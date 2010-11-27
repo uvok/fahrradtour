@@ -14,8 +14,27 @@ Tour::Tour(std::string FormatTour) :
     setupTour(FormatTour);
 }
 
+Tour::Tour(Tour &t) :
+    Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
+    Laenge = t.Laenge;
+    MaxSpeed = t.MaxSpeed;
+    Datum = new Date();
+    this->Datum->setDate(t.Datum->getFormatDate());
+    Dauer = new Time();
+    this->Dauer->setTime(t.Dauer->getFormatTime());
 }
 
+Tour Tour::operator=(const Tour &t) {
+    delete Datum;
+    delete Dauer;
+    Laenge = t.Laenge;
+    MaxSpeed = t.MaxSpeed;
+    Datum = new Date();
+    Datum->setDate(t.Datum->getFormatDate());
+    Dauer = new Time();
+    Dauer->setTime(t.Dauer->getFormatTime());
+    return *this;
+}
 
 Tour::~Tour() {
     delete Datum;
@@ -91,7 +110,14 @@ std::ostream &operator<<(std::ostream &out, Tour *t) {
     return out;
 }
 
+Tour Tour::operator+(const Tour &rhs) {
+    Tour t;
+    t.Laenge = this->Laenge + rhs.Laenge;
+    t.MaxSpeed = ( this->MaxSpeed > rhs.MaxSpeed ) ? ( MaxSpeed ) : ( rhs.MaxSpeed );
+    t.Dauer->Add(rhs.Dauer, this->Dauer);
 
+    return t;
+}
 
 void Tour::Add(Tour &t) {
     Laenge = this->Laenge + t.Laenge;

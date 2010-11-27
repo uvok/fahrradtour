@@ -12,6 +12,10 @@ public:
     
     Tour(std::string FormatTour);
 
+    Tour(Tour &t);
+
+
+
     virtual ~Tour();
 
     void setupTour(Date *datum, Time *dauer, float laenge, float maxspeed);
@@ -22,13 +26,17 @@ public:
 
     float getAvgSpeed() const;
 
-    float getLenght() {
+    float getLenght() const {
         return Laenge;
     }
-    float getvMax() {
+
+    float getvMax() const {
         return MaxSpeed;
     }
 
+    Tour operator+(const Tour &rhs);
+
+    Tour operator=(const Tour &t);
 
     friend std::ostream &operator<<(std::ostream &out, Tour &t);
 
