@@ -1,17 +1,23 @@
 #include "file.h"
 
 bool saveToFile(Tour* t) {
+#if defined(__LINUX__)
     int check;
     string home=getenv("HOME");
     check = chdir(home.c_str());
 
-    //string oFolder_user; passwd *pw = getpwuid(getuid()); if (pw) oFolder_user = pw->pw_dir;
     if (check == -1) {
         std::cerr
                 << "An error occured while trying to changing the directory. Abort"
                 << std::endl;
         return false;
     }
+#endif
+#if defined(_WIN32) || defined(__WIN32)
+    std::cerr << "Warning: You seem to be using Windows. Output file will be"
+            "read from your current working directory until I find out how"
+            "to change to User directory under Windows." << std::endl;
+#endif
 
     std::ofstream file;
     // TODO: Let user choose filename?
@@ -40,6 +46,7 @@ bool saveToFile(Tour* t) {
 }
 
 bool printFileAsTable() {
+#if defined(___LINUX__)
     int check;
     string home=getenv("HOME");
     check = chdir(home.c_str());
@@ -50,6 +57,12 @@ bool printFileAsTable() {
                 << std::endl;
         return false;
     }
+#endif
+#if defined(_WIN32) || defined(__WIN32)
+    std::cerr << "Warning: You seem to be using Windows. Output file will be"
+            "written to your current working directory until I find out how"
+            "to change to User directory under Windows." << std::endl;
+#endif
 
     std::ifstream file;
     // TODO: Let user choose filename?
