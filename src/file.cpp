@@ -82,8 +82,8 @@ bool printFileAsTable() {
     };
     short columnWidth[5] = {0};
     columnWidth[DATE] = 12;
-    columnWidth[LENGHT] = 8;
-    columnWidth[DURATION] = 7;
+    columnWidth[LENGHT] = 9;
+    columnWidth[DURATION] = 8;
     columnWidth[MAXV] = 7;
     columnWidth[AVGV] = 7;
 
@@ -200,7 +200,7 @@ bool printFileAsTable() {
     }
     std::cout << "|" << std::endl;
 
-    std::cout << std::endl << std::endl << std::endl;
+    std::cout << horizontal << std::endl << std::endl;
 
     file.close();
 
