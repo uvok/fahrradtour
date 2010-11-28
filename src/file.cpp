@@ -3,7 +3,7 @@
 bool saveToFile(Tour* t) {
 #if defined(__linux__) || defined(__unix__)
     int check;
-    string home=getenv("HOME");
+    std::string home=getenv("HOME");
     check = chdir(home.c_str());
 
     if (check == -1) {
@@ -48,7 +48,7 @@ bool saveToFile(Tour* t) {
 bool printFileAsTable() {
 #if defined(__linux__) || defined(__unix__)
     int check;
-    string home=getenv("HOME");
+    std::string home=getenv("HOME");
     check = chdir(home.c_str());
 
     if (check == -1) {
@@ -103,12 +103,12 @@ bool printFileAsTable() {
     }
 
     // Begin to write table
-    cout << horizontal << endl;
+    std::cout << horizontal << std::endl;
     //header
     for (int j = 0; j < 5; j++) {
         std::cout << "| ";
         std::cout.width(columnWidth[j] - 1);
-        std::cout << left;
+        std::cout << std::left;
 
         switch (j) {
             case ( DATE ):
@@ -130,9 +130,9 @@ bool printFileAsTable() {
         }
     }
     std::cout << "|" << std::endl;
-    cout << horizontal << endl;
+    std::cout << horizontal << std::endl;
 
-    string format;
+    std::string format;
     Tour t;
     Tour total;
 
@@ -147,7 +147,7 @@ bool printFileAsTable() {
 
             std::cout << "| ";
             std::cout.width(columnWidth[j] - 1);
-            std::cout << left;
+            std::cout << std::left;
 
             switch (j) {
                 case ( DATE ):
@@ -177,7 +177,7 @@ bool printFileAsTable() {
 
         std::cout << "| ";
         std::cout.width(columnWidth[j] - 1);
-        std::cout << left;
+        std::cout << std::left;
 
         switch (j) {
             case ( DATE ):

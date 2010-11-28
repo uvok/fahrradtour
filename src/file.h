@@ -5,7 +5,5 @@
 #include <iostream>
 #include "Tour.h"
 
-using namespace std;
-
 bool saveToFile(Tour* t);
 bool printFileAsTable();

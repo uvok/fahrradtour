@@ -5,17 +5,34 @@
 #include <cstdio>
 #include <cctype>
 
+typedef bool (*fptr)();
+#define MENU_MAX 2
 bool create();
 
 int main() {
+    fptr menu[2] = {&create, &printFileAsTable};
+    int selection = 0;
     // Menu
     // 1. Create Tour
     // 2. Dump Tours
-    // 3. (Future) Get statistics
+    // 0. Quit
+    std::cout << "Select:" << std::endl;
+    std::cout << "1\tCreate new tour" << std::endl;
+    std::cout << "2\tPrint all tours saved in file" << std::endl;
+    std::cout << "0\tQuit" << std::endl;
 
-    // create();
+    do {
+        std::cin >> selection;
+        if (std::cin.fail() || selection < 0 || selection > MENU_MAX) {
+            std::cin.clear();
+            std::cin.ignore(255, '\n');
+            std::cout << "Only enter numbers mentioned above!" << std::endl;
 
-    printFileAsTable();
+        }
+        else break;
+    } while (true);
+
+    if (selection > 0 && selection < 3) menu[selection - 1]();
 
     return 0;
 
