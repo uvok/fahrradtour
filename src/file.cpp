@@ -89,7 +89,7 @@ bool printFileAsTable() {
 
     const int n = columnWidth[DATE] + columnWidth[LENGHT]
             + columnWidth[DURATION] + columnWidth[MAXV] + columnWidth[AVGV] + 6;
-    char* horizontal = new char[n];
+    char* horizontal = new char[n+1];
 
     // horizontal line
     for (int iter = 0; iter < n; iter++)
@@ -101,6 +101,7 @@ bool printFileAsTable() {
         k += columnWidth[iter] + 1;
         horizontal[k] = '+';
     }
+	horizontal[n] = '\0';
 
     // Begin to write table
     std::cout << horizontal << std::endl;
