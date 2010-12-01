@@ -34,6 +34,11 @@ int main() {
 
     if (selection > 0 && selection < 3) menu[selection - 1]();
 
+	#if defined(_WIN32) || defined(__WIN32)
+	std::cin.ignore();
+	std::cin.get();
+	#endif
+
     return 0;
 
 }
