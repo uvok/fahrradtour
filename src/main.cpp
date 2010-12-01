@@ -46,9 +46,15 @@ int main() {
 bool create() {
     // Man koennte meinen, dies gehoert in die Tour Klasse,
     // Sehe ich nicht so, da hier die Daten nur abgefragt werden...
+    
+    Time* time = new (std::nothrow) Time();
+    Date* date = new (std::nothrow) Date();
 
-    Time* time = new Time();
-    Date* date = new Date();
+    if(time == NULL || date == NULL) {
+        std::cerr << "Konnte Speicherplatz nicht allokieren! Abbruch." << std::endl;
+        return false;
+    }
+
     Tour tour;
 
     std::string dat, dur;
