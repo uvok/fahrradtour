@@ -47,24 +47,7 @@ public:
 
     Time operator+ (const Time & rhs);
 
-    //! Add two times objects
-    /*!
-     * Add two times, result goes to calling object
-     * \param t1 First time object
-     * \param t2 Second time object
-     */
-    void Add(Time t1, Time t2);
-
-    //! Add two pointers to time objects
-    /*!
-     * \sa void Add(Time t1, Time t2);
-     * \param *t1 First time pointer
-     * \param *t2 Second time pointer
-     */
-    void Add(Time *t1, Time *t2);
-
     Time operator=(const Time &tm);
-
 
 private:
     USHORT Minutes, Seconds;

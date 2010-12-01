@@ -92,19 +92,6 @@ Time Time::operator+(const Time & rhs) {
     return tm;
 }
 
-void Time::Add(Time t1, Time t2) {
-    this->Add(&t1, &t2);
-}
-
-void Time::Add(Time *t1, Time *t2) {
-    this->Seconds = t1->Seconds + t2->Seconds;
-    this->Minutes = t1->Minutes + t2->Minutes;
-
-    Minutes += Seconds / 60;
-    Seconds %= 60;
-
-}
-
 Time Time::operator=(const Time &tm) {
     this->Minutes = tm.Minutes;
     this->Seconds = tm.Seconds;
