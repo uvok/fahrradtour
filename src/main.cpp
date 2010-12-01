@@ -52,12 +52,13 @@ int main() {
 bool create() {
     // Man koennte meinen, dies gehoert in die Tour Klasse,
     // Sehe ich nicht so, da hier die Daten nur abgefragt werden...
-    
+
     Time* time = new (std::nothrow) Time();
     Date* date = new (std::nothrow) Date();
 
-    if(time == NULL || date == NULL) {
-        std::cerr << "Konnte Speicherplatz nicht allokieren! Abbruch." << std::endl;
+    if (time == NULL || date == NULL) {
+        std::cerr << "Konnte Speicherplatz nicht allokieren! Abbruch."
+                << std::endl;
         return false;
     }
 
@@ -85,6 +86,11 @@ bool create() {
     tour.setupTour(date, time, leng, maxsp);
 
     tour.dumpFormatData();
+
+    if (tour.getvMax() < tour.getAvgSpeed()) {
+        std::cerr << "Maximalgeschwindigkeit kleiner als"
+            "Durchschnittsgeschwindigkeit!" << std::endl;
+    }
 
     char cor;
     do {
