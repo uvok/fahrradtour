@@ -1,9 +1,11 @@
 #include "file.h"
 
 bool saveToFile(Tour* t) {
+	std::string filename="bike.csv";
+	std::string home="";
 #if defined(__linux__) || defined(__unix__)
     int check;
-    std::string home=getenv("HOME");
+    home=getenv("HOME");
     check = chdir(home.c_str());
 
     if (check == -1) {
@@ -14,14 +16,15 @@ bool saveToFile(Tour* t) {
     }
 #endif
 #if defined(_WIN32) || defined(__WIN32)
-    std::cerr << "Warning: You seem to be using Windows. Output file will be"
-            "read from your current working directory until I find out how"
-            "to change to User directory under Windows." << std::endl;
+	// Found no (acceptable!) way to change directory under Windows
+	// -> changing filename
+    home=getenv("USERPROFILE");
+	filename = home + "\\" + filename;
 #endif
 
     std::ofstream file;
     // TODO: Let user choose filename?
-    file.open("bike.csv", std::ios::app);
+	file.open(filename.c_str(), std::ios::app);
 
     if (!file.is_open()) {
         std::cerr << "Could not open file!" << std::endl;
@@ -46,9 +49,11 @@ bool saveToFile(Tour* t) {
 }
 
 bool printFileAsTable() {
+	std::string filename="bike.csv";
+	std::string home="";
 #if defined(__linux__) || defined(__unix__)
     int check;
-    std::string home=getenv("HOME");
+    home=getenv("HOME");
     check = chdir(home.c_str());
 
     if (check == -1) {
@@ -59,14 +64,15 @@ bool printFileAsTable() {
     }
 #endif
 #if defined(_WIN32) || defined(__WIN32)
-    std::cerr << "Warning: You seem to be using Windows. Output file will be"
-            "written to your current working directory until I find out how"
-            "to change to User directory under Windows." << std::endl;
+	// Found no (acceptable!) way to change directory under Windows
+	// -> changing filename
+    home=getenv("USERPROFILE");
+	filename = home + "\\" + filename;
 #endif
 
     std::ifstream file;
     // TODO: Let user choose filename?
-    file.open("bike.csv");
+	file.open(filename.c_str());
 
     if (!file.is_open()) {
         std::cerr << "Could not open file!" << std::endl;
