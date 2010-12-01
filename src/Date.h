@@ -41,6 +41,8 @@ public:
      */
     std::string getFormatDate() const;
 
+	Date operator=(const Date &t);
+
 private:
     USHORT Day, Month, Year;
 };

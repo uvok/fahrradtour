@@ -104,3 +104,9 @@ void Time::Add(Time *t1, Time *t2) {
     Seconds %= 60;
 
 }
+
+Time Time::operator=(const Time &tm) {
+    this->Minutes = tm.Minutes;
+    this->Seconds = tm.Seconds;
+    return *this;
+}

@@ -81,3 +81,10 @@ bool Date::setDate(const std::string& date) {
 
     return true;
 }
+
+Date Date::operator=(const Date &t) {
+    this->Day = t.Day;
+    this->Month = t.Month;
+    this->Year = t.Year;
+    return *this;
+}

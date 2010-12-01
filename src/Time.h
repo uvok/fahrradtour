@@ -63,6 +63,8 @@ public:
      */
     void Add(Time *t1, Time *t2);
 
+    Time operator=(const Time &tm);
+
 
 private:
     USHORT Minutes, Seconds;
