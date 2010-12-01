@@ -25,8 +25,6 @@ public:
     //! Copy constructor
     Tour(Tour &t);
 
-
-
     virtual ~Tour();
 
     //! Setup tour
@@ -46,12 +44,6 @@ public:
      */
     void setupTour(std::string FormatTour);
 
-    //! Add two tours
-    /*
-     * Adds two tours, date is not affected.
-     * MaxSpeeds are not added, maximum value is used.
-     */
-    void Add(Tour &t);
     //! print data
     /*!
      * Prints data as nice output.

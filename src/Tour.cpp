@@ -121,14 +121,7 @@ Tour Tour::operator+(const Tour &rhs) {
     Tour t;
     t.Laenge = this->Laenge + rhs.Laenge;
     t.MaxSpeed = ( this->MaxSpeed > rhs.MaxSpeed ) ? ( MaxSpeed ) : ( rhs.MaxSpeed );
-    t.Dauer->Add(rhs.Dauer, this->Dauer);
+    *(t.Dauer) = *(rhs.Dauer) + *(this->Dauer);
 
     return t;
 }
-
-void Tour::Add(Tour &t) {
-    Laenge = this->Laenge + t.Laenge;
-    MaxSpeed = ( this->MaxSpeed > t.MaxSpeed ) ? ( MaxSpeed ) : ( t.MaxSpeed );
-    Dauer->Add(t.Dauer, this->Dauer);
-}
-
