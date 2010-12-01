@@ -12,32 +12,38 @@ bool create();
 int main() {
     fptr menu[2] = {&create, &printFileAsTable};
     int selection = 0;
-    // Menu
-    // 1. Create Tour
-    // 2. Dump Tours
-    // 0. Quit
-    std::cout << "Select:" << std::endl;
-    std::cout << "1\tCreate new tour" << std::endl;
-    std::cout << "2\tPrint all tours saved in file" << std::endl;
-    std::cout << "0\tQuit" << std::endl;
 
     do {
-        std::cin >> selection;
-        if (std::cin.fail() || selection < 0 || selection > MENU_MAX) {
-            std::cin.clear();
-            std::cin.ignore(255, '\n');
-            std::cout << "Only enter numbers mentioned above!" << std::endl;
+        // Menu
+        // 1. Create Tour
+        // 2. Dump Tours
+        // 0. Quit
+        std::cout << "Select:" << std::endl;
+        std::cout << "1\tCreate new tour" << std::endl;
+        std::cout << "2\tPrint all tours saved in file" << std::endl;
+        std::cout << "0\tQuit" << std::endl;
 
-        }
-        else break;
-    } while (true);
+        do {
+            std::cout << "select> " << std::ends;
+            std::cin >> selection;
+            if (std::cin.fail() || selection < 0 || selection > MENU_MAX) {
+                std::cin.clear();
+                std::cin.ignore(255, '\n');
+                std::cout << "Only enter numbers mentioned above!" << std::endl;
 
-    if (selection > 0 && selection < 3) menu[selection - 1]();
+            }
+            else break;
+        } while (true);
 
-	#if defined(_WIN32) || defined(__WIN32)
-	std::cin.ignore();
-	std::cin.get();
-	#endif
+        if (selection > 0 && MENU_MAX <= 3) menu[selection - 1]();
+
+    } while (selection != 0);
+
+    // Keep console open for Windows users
+#if defined(_WIN32) || defined(__WIN32)
+    std::cin.ignore();
+    std::cin.get();
+#endif
 
     return 0;
 
