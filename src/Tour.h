@@ -23,7 +23,7 @@ public:
     Tour(std::string FormatTour);
 
     //! Copy constructor
-    Tour(Tour &t);
+    Tour(const Tour &t);
 
     virtual ~Tour();
 
@@ -66,8 +66,7 @@ public:
         return MaxSpeed;
     }
 
-    //! Add two tours
-    Tour operator+(const Tour &rhs);
+    Tour& operator+=(const Tour &rhs);
 
     //! Operator overloading =
     Tour operator=(const Tour &t);
@@ -97,5 +96,7 @@ private:
     Date *Datum;
     Time *Dauer;
 };
+
+const Tour operator+(const Tour& lhs, const Tour& rhs);
 
 #endif /* TOUR_H_ */

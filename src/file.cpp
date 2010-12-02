@@ -176,7 +176,7 @@ bool printFileAsTable() {
             }
         }
         std::cout << "|" << std::endl;
-        total = total + t;
+        total += t;
     }
     std::cout << horizontal << std::endl << horizontal << std::endl;
 

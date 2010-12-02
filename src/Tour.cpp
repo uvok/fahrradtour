@@ -2,20 +2,20 @@
 #define WIDTH 16
 
 Tour::Tour() :
-    Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
+            Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
     Datum = new Date();
     Dauer = new Time();
 }
 
 Tour::Tour(std::string FormatTour) :
-    Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
+            Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
     Datum = new Date;
     Dauer = new Time;
     setupTour(FormatTour);
 }
 
-Tour::Tour(Tour &t) :
-    Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
+Tour::Tour(const Tour &t) :
+            Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
     Laenge = t.Laenge;
     MaxSpeed = t.MaxSpeed;
     Datum = new Date();
@@ -29,15 +29,15 @@ Tour Tour::operator=(const Tour &t) {
     MaxSpeed = t.MaxSpeed;
 
     if(this->Datum != t.Datum) {
-    delete Datum;
-    Datum = new Date();
-    Datum->setDate(t.Datum->getFormatDate());
+        delete Datum;
+        Datum = new Date();
+        Datum->setDate(t.Datum->getFormatDate());
     }
 
     if(this->Dauer != t.Dauer) {
-    delete Dauer;
-    Dauer = new Time();
-    Dauer->setTime(t.Dauer->getFormatTime());
+        delete Dauer;
+        Dauer = new Time();
+        Dauer->setTime(t.Dauer->getFormatTime());
     }
 
     return *this;
@@ -117,11 +117,18 @@ std::ostream &operator<<(std::ostream &out, Tour *t) {
     return out;
 }
 
-Tour Tour::operator+(const Tour &rhs) {
-    Tour t;
-    t.Laenge = this->Laenge + rhs.Laenge;
-    t.MaxSpeed = ( this->MaxSpeed > rhs.MaxSpeed ) ? ( MaxSpeed ) : ( rhs.MaxSpeed );
-    *(t.Dauer) = *(rhs.Dauer) + *(this->Dauer);
+Tour& Tour::operator+=(const Tour &rhs) {
 
-    return t;
+    this->Laenge += rhs.Laenge;
+    this->MaxSpeed = ( this->MaxSpeed > rhs.MaxSpeed ) ? ( this->MaxSpeed ) : ( rhs.MaxSpeed );
+    *(this->Dauer) = *(rhs.Dauer) + *(this->Dauer);
+
+    return *this;
+}
+
+const Tour operator+(const Tour& lhs, const Tour& rhs) {
+    Tour temp(lhs);
+    temp += rhs;
+    return temp;
+
 }
