@@ -66,6 +66,10 @@ public:
         return MaxSpeed;
     }
 
+	//! operator +=
+	/*!
+	 * Add tours by adding lengths and durations.
+	 */
     Tour& operator+=(const Tour &rhs);
 
     //! Operator overloading =
@@ -97,6 +101,7 @@ private:
     Time *Dauer;
 };
 
+//! Adds 2 tours, returns a Tour object
 const Tour operator+(const Tour& lhs, const Tour& rhs);
 
 #endif /* TOUR_H_ */

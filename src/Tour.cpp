@@ -19,9 +19,9 @@ Tour::Tour(const Tour &t) :
     Laenge = t.Laenge;
     MaxSpeed = t.MaxSpeed;
     Datum = new Date();
-    this->Datum->setDate(t.Datum->getFormatDate());
+    *(this->Datum) = *(t.Datum);
     Dauer = new Time();
-    this->Dauer->setTime(t.Dauer->getFormatTime());
+    *(this->Dauer) = *(t.Dauer);
 }
 
 Tour Tour::operator=(const Tour &t) {
@@ -75,14 +75,15 @@ void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {
 // Gibt nur die grade eingegebenen Daten zur Kontrolle aus
 void Tour::dumpFormatData() {
     // cout << setw(WIDTH) sollte das gleiche tun?
-
+    std::cout << std::fixed;
+    std::cout.precision(1);
     std::cout.width(WIDTH);
     std::cout << std::left << "Datum:";
     std::cout << Datum->getFormatDate() << std::endl;
 
     std::cout.width(WIDTH);
     std::cout << std::left << "Laenge:";
-    std::cout << Laenge << std::endl;
+    std::cout << this->Laenge << std::endl;
 
     std::cout.width(WIDTH);
     std::cout << std::left << "Dauer:";
@@ -90,10 +91,10 @@ void Tour::dumpFormatData() {
 
     std::cout.width(WIDTH);
     std::cout << std::left << "Max Geschw:";
-    std::cout << MaxSpeed << std::endl;
+    std::cout << this->MaxSpeed << std::endl;
 
     std::cout.width(WIDTH);
-    std::cout.precision(2);
+
     std::cout << std::left << "Avg Geschw:";
     std::cout << getAvgSpeed() << std::endl;
 }
