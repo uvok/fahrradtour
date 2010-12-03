@@ -92,7 +92,9 @@ public:
     /*!
      * \sa bool printFileAsTable();
      */
-    friend bool printFileAsTable();
+
+    std::string getDate() const;
+    std::string getTime() const;
 
 private:
     float Laenge, MaxSpeed;

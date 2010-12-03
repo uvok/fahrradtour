@@ -127,7 +127,15 @@ Tour& Tour::operator+=(const Tour &rhs) {
     return *this;
 }
 
-const Tour operator+(const Tour& lhs, const Tour& rhs) {
+std::string Tour::getDate() const {
+    return Datum->getFormatDate();
+}
+std::string Tour::getTime() const {
+    return Dauer->getFormatTime();
+}
+
+// Free function
+const Tour operator+(const Tour& lhs, const Tour& rhs)  {
     Tour temp(lhs);
     temp += rhs;
     return temp;
