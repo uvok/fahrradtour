@@ -76,62 +76,9 @@ bool printFileAsTable() {
         return false;
     }
 
+    Table tourtable;
+
     // Everything should be ok here
-    enum columns {
-        DATE, DURATION, LENGHT, MAXV, AVGV
-    };
-    short columnWidth[5] = {0};
-    columnWidth[DATE] = 12;
-    columnWidth[LENGHT] = 9;
-    columnWidth[DURATION] = 8;
-    columnWidth[MAXV] = 7;
-    columnWidth[AVGV] = 7;
-
-    const int n = columnWidth[DATE] + columnWidth[LENGHT]
-            + columnWidth[DURATION] + columnWidth[MAXV] + columnWidth[AVGV] + 6;
-    char* horizontal = new char[n+1];
-
-    // horizontal line
-    for (int iter = 0; iter < n; iter++)
-        horizontal[iter] = '-';
-
-    int k = 0;
-    horizontal[k] = '+';
-    for (int iter = 0; iter < 5; iter++) {
-        k += columnWidth[iter] + 1;
-        horizontal[k] = '+';
-    }
-	horizontal[n] = '\0';
-
-    // Begin to write table
-    std::cout << horizontal << std::endl;
-    //header
-    for (int j = 0; j < 5; j++) {
-        std::cout << "| ";
-        std::cout.width(columnWidth[j] - 1);
-        std::cout << std::left;
-
-        switch (j) {
-            case ( DATE ):
-                std::cout << "Datum";
-                break;
-            case ( LENGHT ):
-                std::cout << "Laenge";
-                break;
-            case ( DURATION ):
-                std::cout << "Dauer";
-                break;
-            case ( MAXV ):
-                std::cout << "Max v";
-                break;
-            case ( AVGV ):
-                std::cout << "Avg v";
-                break;
-
-        }
-    }
-    std::cout << "|" << std::endl;
-    std::cout << horizontal << std::endl;
 
     std::string format;
     Tour t;
@@ -141,67 +88,11 @@ bool printFileAsTable() {
         getline(file, format);
         if (format == "") continue; // empty line
         t.setupTour(format);
-
-        // Write actual table content
-        std::cout.precision(4);
-        for (int j = 0; j < 5; j++) {
-
-            std::cout << "| ";
-            std::cout.width(columnWidth[j] - 1);
-            std::cout << std::left;
-
-            switch (j) {
-                case ( DATE ):
-                    std::cout << t.Datum->getFormatDate();
-                    break;
-                case ( LENGHT ):
-                    std::cout << t.getLenght();
-                    break;
-                case ( DURATION ):
-                    std::cout << t.Dauer->getFormatTime();
-                    break;
-                case ( MAXV ):
-                    std::cout << t.getvMax();
-                    break;
-                case ( AVGV ):
-                    std::cout << t.getAvgSpeed();
-                    break;
-
-            }
-        }
-        std::cout << "|" << std::endl;
+        tourtable.printLine(t);
         total += t;
     }
-    std::cout << horizontal << std::endl << horizontal << std::endl;
 
-    for (int j = 0; j < 5; j++) {
-
-        std::cout << "| ";
-        std::cout.width(columnWidth[j] - 1);
-        std::cout << std::left;
-
-        switch (j) {
-            case ( DATE ):
-                std::cout << " ";
-                break;
-            case ( LENGHT ):
-                std::cout << total.getLenght();
-                break;
-            case ( DURATION ):
-                std::cout << total.Dauer->getFormatTime();
-                break;
-            case ( MAXV ):
-                std::cout << total.getvMax();
-                break;
-            case ( AVGV ):
-                std::cout << total.getAvgSpeed();
-                break;
-
-        }
-    }
-    std::cout << "|" << std::endl;
-
-    std::cout << horizontal << std::endl << std::endl;
+    tourtable.printTotal(total);
 
     file.close();
 
