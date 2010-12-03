@@ -28,9 +28,6 @@ bool saveToFile(Tour* t) {
 
     if (!file.is_open()) {
         std::cerr << "Could not open file!" << std::endl;
-        // TODO: Does this make sense at all?
-        // If opening fails, why should I close it?
-        file.close();
         return false;
     }
 
@@ -76,9 +73,6 @@ bool printFileAsTable() {
 
     if (!file.is_open()) {
         std::cerr << "Could not open file!" << std::endl;
-        // TODO: Does this make sense at all?
-        // If opening fails, why should I close it?
-        file.close();
         return false;
     }
 
@@ -213,4 +207,3 @@ bool printFileAsTable() {
 
     return true;
 }
-

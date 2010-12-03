@@ -48,7 +48,7 @@ public:
     /*!
      * Prints data as nice output.
      */
-    void dumpFormatData();
+    void dumpFormatData() const;
 
     //! returns average speed
     /*!

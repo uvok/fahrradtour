@@ -82,7 +82,7 @@ unsigned int Time::getSeconds() const {
     return Minutes * 60 + Seconds;
 }
 
-Time Time::operator+(const Time & rhs) {
+Time Time::operator+(const Time & rhs) const{
     Time tm;
     tm.Seconds = this->Seconds + rhs.Seconds;
     tm.Minutes = this->Minutes + rhs.Minutes;

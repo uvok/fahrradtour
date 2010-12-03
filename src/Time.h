@@ -45,7 +45,7 @@ public:
      */
     unsigned int getSeconds() const;
 
-    Time operator+ (const Time & rhs);
+    Time operator+ (const Time & rhs) const;
 
     Time operator=(const Time &tm);
 

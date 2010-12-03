@@ -73,7 +73,7 @@ void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {
 }
 
 // Gibt nur die grade eingegebenen Daten zur Kontrolle aus
-void Tour::dumpFormatData() {
+void Tour::dumpFormatData() const {
     // cout << setw(WIDTH) sollte das gleiche tun?
     std::cout << std::fixed;
     std::cout.precision(1);
