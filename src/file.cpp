@@ -1,11 +1,11 @@
 #include "file.h"
 
 bool saveToFile(Tour* t) {
-	std::string filename="bike.csv";
-	std::string home="";
+    std::string filename = "bike.csv";
+    std::string home = "";
 #if defined(__linux__) || defined(__unix__)
     int check;
-    home=getenv("HOME");
+    home = getenv("HOME");
     check = chdir(home.c_str());
 
     if (check == -1) {
@@ -16,15 +16,15 @@ bool saveToFile(Tour* t) {
     }
 #endif
 #if defined(_WIN32) || defined(__WIN32)
-	// Found no (acceptable!) way to change directory under Windows
-	// -> changing filename
+    // Found no (acceptable!) way to change directory under Windows
+    // -> changing filename
     home=getenv("USERPROFILE");
-	filename = home + "\\" + filename;
+    filename = home + "\\" + filename;
 #endif
 
     std::ofstream file;
     // TODO: Let user choose filename?
-	file.open(filename.c_str(), std::ios::app);
+    file.open(filename.c_str(), std::ios::app);
 
     if (!file.is_open()) {
         std::cerr << "Could not open file!" << std::endl;
@@ -46,11 +46,11 @@ bool saveToFile(Tour* t) {
 }
 
 bool printFileAsTable() {
-	std::string filename="bike.csv";
-	std::string home="";
+    std::string filename = "bike.csv";
+    std::string home = "";
 #if defined(__linux__) || defined(__unix__)
     int check;
-    home=getenv("HOME");
+    home = getenv("HOME");
     check = chdir(home.c_str());
 
     if (check == -1) {
@@ -61,15 +61,15 @@ bool printFileAsTable() {
     }
 #endif
 #if defined(_WIN32) || defined(__WIN32)
-	// Found no (acceptable!) way to change directory under Windows
-	// -> changing filename
+    // Found no (acceptable!) way to change directory under Windows
+    // -> changing filename
     home=getenv("USERPROFILE");
-	filename = home + "\\" + filename;
+    filename = home + "\\" + filename;
 #endif
 
     std::ifstream file;
     // TODO: Let user choose filename?
-	file.open(filename.c_str());
+    file.open(filename.c_str());
 
     if (!file.is_open()) {
         std::cerr << "Could not open file!" << std::endl;

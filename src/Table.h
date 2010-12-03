@@ -26,7 +26,7 @@ protected:
 private:
     std::ifstream file;
     short nrOfCols;
-    short columnWidth[5];   // "hard values" for now
+    short columnWidth[5]; // "hard values" for now
     short tableWidth;
     char* horizontalLine;
 

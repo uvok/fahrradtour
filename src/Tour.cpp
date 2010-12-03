@@ -2,39 +2,39 @@
 #define WIDTH 16
 
 Tour::Tour() :
-            Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
+    Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
     Datum = new Date();
     Dauer = new Time();
 }
 
 Tour::Tour(std::string FormatTour) :
-            Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
+    Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
     Datum = new Date;
     Dauer = new Time;
     setupTour(FormatTour);
 }
 
 Tour::Tour(const Tour &t) :
-            Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
+    Laenge(0), MaxSpeed(0), Datum(NULL), Dauer(NULL) {
     Laenge = t.Laenge;
     MaxSpeed = t.MaxSpeed;
     Datum = new Date();
-    *(this->Datum) = *(t.Datum);
+    *( this->Datum ) = *( t.Datum );
     Dauer = new Time();
-    *(this->Dauer) = *(t.Dauer);
+    *( this->Dauer ) = *( t.Dauer );
 }
 
 Tour Tour::operator=(const Tour &t) {
     Laenge = t.Laenge;
     MaxSpeed = t.MaxSpeed;
 
-    if(this->Datum != t.Datum) {
+    if (this->Datum != t.Datum) {
         delete Datum;
         Datum = new Date();
         Datum->setDate(t.Datum->getFormatDate());
     }
 
-    if(this->Dauer != t.Dauer) {
+    if (this->Dauer != t.Dauer) {
         delete Dauer;
         Dauer = new Time();
         Dauer->setTime(t.Dauer->getFormatTime());
@@ -44,8 +44,8 @@ Tour Tour::operator=(const Tour &t) {
 }
 
 Tour::~Tour() {
-    if(Datum != NULL) delete Datum;
-    if(Dauer != NULL) delete Dauer;
+    if (Datum != NULL) delete Datum;
+    if (Dauer != NULL) delete Dauer;
 }
 
 void Tour::setupTour(std::string FormatTour) {
@@ -121,28 +121,25 @@ std::ostream &operator<<(std::ostream &out, Tour *t) {
 Tour& Tour::operator+=(const Tour &rhs) {
 
     this->Laenge += rhs.Laenge;
-    this->MaxSpeed = ( this->MaxSpeed > rhs.MaxSpeed ) ? ( this->MaxSpeed ) : ( rhs.MaxSpeed );
-    *(this->Dauer) = *(rhs.Dauer) + *(this->Dauer);
+    this->MaxSpeed = ( this->MaxSpeed > rhs.MaxSpeed ) ? ( this->MaxSpeed )
+            : ( rhs.MaxSpeed );
+    *( this->Dauer ) = *( rhs.Dauer ) + *( this->Dauer );
     this->Datum = NULL; // as you can't add dates, delete it
 
     return *this;
 }
 
 std::string Tour::getDate() const {
-    if(Datum != NULL)
-        return Datum->getFormatDate();
-    else
-        return "";
+    if (Datum != NULL) return Datum->getFormatDate();
+    else return "";
 }
 std::string Tour::getTime() const {
-    if(Dauer != NULL)
-        return Dauer->getFormatTime();
-    else
-        return "";
+    if (Dauer != NULL) return Dauer->getFormatTime();
+    else return "";
 }
 
 // Free function
-const Tour operator+(const Tour& lhs, const Tour& rhs)  {
+const Tour operator+(const Tour& lhs, const Tour& rhs) {
     Tour temp(lhs);
     temp += rhs;
     return temp;
