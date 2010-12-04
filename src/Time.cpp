@@ -32,8 +32,8 @@ bool Time::setTime(const std::string& time) {
     std::stringstream ss(time);
 
     // Overkill, here we go?
-    std::vector<short> v;
-    short i = 0;
+    std::vector<int> v;
+    int i = 0;
 
     std::string j;
 
@@ -52,10 +52,10 @@ bool Time::setTime(const std::string& time) {
 
     // 1. Seconds / Last element
 
-    i = v.back();
+    i = (short) v.back();
     v.pop_back();
 
-    if (i >= 0 && i < 60) Seconds = i;
+    if (i >= 0 && i < 60) Seconds = (short) i;
     else {
         std::cerr << "Formatfehler" << std::endl;
         // TODO: Is it save to leave here, without clearing the vector?
@@ -84,7 +84,7 @@ unsigned int Time::getSeconds() const {
 
 Time Time::operator+(const Time & rhs) const {
     Time tm;
-    tm.Seconds = this->Seconds + rhs.Seconds;
+    tm.Seconds = short(this->Seconds + rhs.Seconds);
     tm.Minutes = this->Minutes + rhs.Minutes;
     tm.Minutes += tm.Seconds / 60;
     tm.Seconds %= 60;
@@ -92,7 +92,7 @@ Time Time::operator+(const Time & rhs) const {
     return tm;
 }
 
-Time Time::operator=(const Time &tm) {
+Time& Time::operator=(const Time &tm) {
     this->Minutes = tm.Minutes;
     this->Seconds = tm.Seconds;
     return *this;

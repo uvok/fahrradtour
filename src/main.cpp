@@ -96,7 +96,7 @@ bool create() {
     do {
         std::cout << "Daten korrekt und Daten speichern? <y/n> ";
         std::cin.ignore(1, '\n');
-        cor = getchar();
+        cor = (char) getchar();
         std::cin.ignore(1, '\n');
         //cor = std::tolower(cor);
     } while (cor != 'y' && cor != 'n');

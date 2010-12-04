@@ -24,10 +24,9 @@ public:
 protected:
 
 private:
-    std::ifstream file;
-    short nrOfCols;
-    short columnWidth[5]; // "hard values" for now
-    short tableWidth;
+    int nrOfCols;
+    int columnWidth[5];   // "hard values" for now
+    int tableWidth;
     std::string horizontalLine;
 
     void initHorizontal();

@@ -24,7 +24,7 @@ Tour::Tour(const Tour &t) :
     *( this->Dauer ) = *( t.Dauer );
 }
 
-Tour Tour::operator=(const Tour &t) {
+Tour& Tour::operator=(const Tour &t) {
     Laenge = t.Laenge;
     MaxSpeed = t.MaxSpeed;
 
@@ -57,9 +57,9 @@ void Tour::setupTour(std::string FormatTour) {
         i++;
     }
     Datum->setDate(temp[0]);
-    Laenge = StringToDbl(temp[1]);
+    Laenge = (float) StringToDbl(temp[1]);
     Dauer->setTime(temp[2]);
-    MaxSpeed = StringToDbl(temp[3]);
+    MaxSpeed = (float) StringToDbl(temp[3]);
 }
 
 void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {
@@ -101,9 +101,9 @@ void Tour::dumpFormatData() const {
 
 float Tour::getAvgSpeed() const {
     // v = s / t
-    double speed;
+    float speed;
     // km/s * 60 = km/min; km/min * 60 = km/h;
-    speed = 3600 * Laenge / Dauer->getSeconds();
+    speed = 3600 * Laenge / (float) Dauer->getSeconds();
     return speed;
 }
 

@@ -4,7 +4,8 @@ Date::Date() :
     Day(1), Month(1), Year(2000) {
 }
 
-Date::Date(const std::string& datum) {
+Date::Date(const std::string& datum) :
+    Day(1), Month(1), Year(2000) {
     setDate(datum);
 }
 
@@ -38,7 +39,7 @@ bool Date::setDate(const std::string& date) {
 
     while (ss.good()) {
         std::getline(ss, j, '.');
-        i = StringToInt(j);
+        i = (short) StringToInt(j);
         v.push_back(i);
     }
 
@@ -82,7 +83,7 @@ bool Date::setDate(const std::string& date) {
     return true;
 }
 
-Date Date::operator=(const Date &t) {
+Date& Date::operator=(const Date &t) {
     this->Day = t.Day;
     this->Month = t.Month;
     this->Year = t.Year;

@@ -47,10 +47,11 @@ public:
 
     Time operator+(const Time & rhs) const;
 
-    Time operator=(const Time &tm);
+    Time& operator=(const Time &tm);
 
 private:
-    USHORT Minutes, Seconds;
+    int Minutes;
+    USHORT Seconds;
 
 };
 

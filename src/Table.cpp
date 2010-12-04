@@ -1,16 +1,20 @@
 #include "Table.h"
 
-Table::Table() {
+Table::Table()
+    : nrOfCols(5), tableWidth(80), horizontalLine("") {
     // "hard values" for now
-    nrOfCols = 5;
     columnWidth[DATE] = 12;
     columnWidth[LENGTH] = 9;
     columnWidth[DURATION] = 8;
     columnWidth[MAXV] = 7;
     columnWidth[AVGV] = 7;
-    tableWidth = columnWidth[DATE] + columnWidth[LENGTH]
-            + columnWidth[DURATION] + columnWidth[MAXV] + columnWidth[AVGV]
-            + nrOfCols + 1;
+    tableWidth = columnWidth[DATE] 
+                  + columnWidth[LENGTH] 
+                  + columnWidth[DURATION] 
+                  + columnWidth[MAXV] 
+                  + columnWidth[AVGV] 
+                  + nrOfCols 
+                  + 1;
 
     this->initHorizontal();
     this->printHeader();

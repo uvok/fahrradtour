@@ -73,7 +73,7 @@ public:
     Tour& operator+=(const Tour &rhs);
 
     //! Operator overloading =
-    Tour operator=(const Tour &t);
+    Tour& operator=(const Tour &t);
 
     //! output operator for a tour object
     /*!
