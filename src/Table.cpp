@@ -11,27 +11,22 @@ Table::Table() {
     tableWidth = columnWidth[DATE] + columnWidth[LENGTH]
             + columnWidth[DURATION] + columnWidth[MAXV] + columnWidth[AVGV]
             + nrOfCols + 1;
-    horizontalLine = new char[tableWidth + 1];
 
     this->initHorizontal();
     this->printHeader();
 }
 
 Table::~Table() {
-    delete[] horizontalLine;
 }
 
 void Table::initHorizontal() {
-    for (int i = 0; i < tableWidth; i++)
-        horizontalLine[i] = '-';
-
+    horizontalLine.assign(tableWidth, '-');
     int k = 0;
-    horizontalLine[k] = '+';
+    horizontalLine.replace(k, 1, "+");
     for (int j = 0; j < nrOfCols; j++) {
         k += columnWidth[j] + 1;
-        horizontalLine[k] = '+';
+        horizontalLine.replace(k, 1, "+");
     }
-    horizontalLine[tableWidth] = '\0';
 }
 
 void Table::printHeader() const {
@@ -95,9 +90,6 @@ void Table::printLine(const Tour& t) const {
     std::cout << "|" << std::endl;
 }
 
-// TODO: Problem: total tour has a date, which should not be printed
-// But don't want to write nearly the same source twice for same function only
-// because of that
 void Table::printTotal(const Tour& total) const {
     std::cout << horizontalLine << std::endl << horizontalLine << std::endl;
     printLine(total);
