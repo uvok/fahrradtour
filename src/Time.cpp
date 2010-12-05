@@ -52,10 +52,10 @@ bool Time::setTime(const std::string& time) {
 
     // 1. Seconds / Last element
 
-    i = (short) v.back();
+    i = static_cast<short> (v.back());
     v.pop_back();
 
-    if (i >= 0 && i < 60) Seconds = (short) i;
+    if (i >= 0 && i < 60) Seconds = static_cast<short> (i);
     else {
         std::cerr << "Formatfehler" << std::endl;
         // TODO: Is it save to leave here, without clearing the vector?
