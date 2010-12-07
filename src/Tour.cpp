@@ -25,6 +25,7 @@ Tour::Tour(const Tour &t) :
 }
 
 Tour& Tour::operator=(const Tour &t) {
+    if (this == &t) return *this;
     Laenge = t.Laenge;
     MaxSpeed = t.MaxSpeed;
 
