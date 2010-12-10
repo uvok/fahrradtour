@@ -8,19 +8,3 @@ std::string IntToString(int number) {
     return s;
 }
 
-int StringToInt(const std::string& datestring) {
-    int i = 0;
-    std::stringstream ss;
-    ss.str(datestring);
-    ss >> i;
-    return i;
-}
-
-double StringToDbl(const std::string& datestring) {
-    double i = 0;
-    std::stringstream ss;
-    ss.str(datestring);
-    ss >> i;
-    return i;
-}
-

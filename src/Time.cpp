@@ -39,7 +39,7 @@ bool Time::setTime(const std::string& time) {
 
     while (ss.good()) {
         std::getline(ss, j, ':');
-        i = StringToInt(j);
+        i = StringToNum<int>(j);
         v.push_back(i);
     }
 

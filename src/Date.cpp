@@ -39,7 +39,7 @@ bool Date::setDate(const std::string& date) {
 
     while (ss.good()) {
         std::getline(ss, j, '.');
-        i = static_cast<short> (StringToInt(j));
+        i = StringToNum<short>(j);
         v.push_back(i);
     }
 

@@ -58,9 +58,9 @@ void Tour::setupTour(std::string FormatTour) {
         i++;
     }
     Datum->setDate(temp[0]);
-    Laenge = static_cast<float> (StringToDbl(temp[1]));
+    Laenge = StringToNum<float>(temp[1]);
     Dauer->setTime(temp[2]);
-    MaxSpeed = static_cast<float> (StringToDbl(temp[3]));
+    MaxSpeed = StringToNum<float>(temp[3]);
 }
 
 void Tour::setupTour(Date *datum, Time *dauer, float laenge, float maxspeed) {

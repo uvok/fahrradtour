@@ -5,7 +5,15 @@
 #include <sstream>
 
 std::string IntToString(int number);
-int StringToInt(const std::string& datestring);
-double StringToDbl(const std::string& datestring);
+
+template <class NUM>
+NUM StringToNum(const std::string& datestring) {
+    NUM i = 0;
+    std::stringstream ss;
+    ss.str(datestring);
+    ss >> i;
+    return i;
+}
+
 
 #endif /* TOOL_H_ */
